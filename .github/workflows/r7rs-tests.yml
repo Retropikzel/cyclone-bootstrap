@@ -1,0 +1,19 @@
+name: R7RS Tests
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+    - name: Install ck
+      run: sudo apt-get install libck-dev make git
+    - name: make
+      run: make
+    - name: make install
+      run: sudo make install
+    - name: Clone R7RS Tests
+      run: git clone https://github.com/ashinn/chibi-scheme --depth=1
+    - name: Compile R7RS Tests
+      run: cyclone chibi-scheme/tests/r7rs-tests.scm
