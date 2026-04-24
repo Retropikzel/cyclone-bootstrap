@@ -17,8 +17,8 @@ jobs:
       run: |
         git clone https://github.com/srfi-explorations/r7rs-srfi.git --depth=1
         mkdir -p srfi
-        cp r7rs-srfi/srfi/64.sld srfi/
-        cp r7rs-srfi/srfi/64.scm srfi/
+        cp r7rs-srfi/srfi/64.sld chibi-scheme/tests/srfi/
+        cp r7rs-srfi/srfi/64.scm chibi-scheme/tests/srfi/
     - name: Clone R7RS Tests
       run: |
         git clone https://github.com/ashinn/chibi-scheme --depth=1
