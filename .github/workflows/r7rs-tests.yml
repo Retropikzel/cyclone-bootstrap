@@ -21,6 +21,7 @@ jobs:
         cp r7rs-srfi/srfi/64.scm srfi/
     - name: Clone R7RS Tests
       run: |
+        rm -rf chibi-scheme
         git clone https://github.com/ashinn/chibi-scheme --depth=1
         git -C chibi-scheme checkout 97faa0bf2d123c558d7ab79216906567c44cb03c
     - name: Fix r7rs-tests to use (srfi 64)
