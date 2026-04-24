@@ -13,16 +13,16 @@ jobs:
       run: make
     - name: make install
       run: sudo make install
+    - name: Clone R7RS Tests
+      run: |
+        git clone https://github.com/ashinn/chibi-scheme --depth=1
+        git -C chibi-scheme checkout 97faa0bf2d123c558d7ab79216906567c44cb03c
     - name: Clone (srfi 64)
       run: |
         git clone https://github.com/srfi-explorations/r7rs-srfi.git --depth=1
         mkdir -p chibi-scheme/tests/srfi
         cp r7rs-srfi/srfi/64.sld chibi-scheme/tests/srfi/
         cp r7rs-srfi/srfi/64.scm chibi-scheme/tests/srfi/
-    - name: Clone R7RS Tests
-      run: |
-        git clone https://github.com/ashinn/chibi-scheme --depth=1
-        git -C chibi-scheme checkout 97faa0bf2d123c558d7ab79216906567c44cb03c
     - name: Fix r7rs-tests to use (srfi 64)
       run: |
         sed -i 's/(chibi test)/(srfi 64)/' chibi-scheme/tests/r7rs-tests.scm
