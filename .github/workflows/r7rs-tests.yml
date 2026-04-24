@@ -26,6 +26,7 @@ jobs:
     - name: Fix r7rs-tests to use (srfi 64)
       run: |
         sed -i 's/(chibi test)/(srfi 64)/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '10 s/^/(define test test-equal)/' chibi-scheme/tests/r7rs-tests.scm
     - name: Remove (scheme r5rs) from imports
       run: |
         sed -i 's/(scheme r5rs)//' chibi-scheme/tests/r7rs-tests.scm
