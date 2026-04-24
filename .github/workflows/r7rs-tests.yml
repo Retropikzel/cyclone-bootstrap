@@ -3,7 +3,7 @@ name: R7RS Tests
 on: [push]
 
 jobs:
-  build:
+  r7rs-tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
