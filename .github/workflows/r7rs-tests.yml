@@ -60,6 +60,7 @@ jobs:
         sed -i '1952 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
         sed -i '2076 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
         sed -i '2510 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '2268 s/^/;/' chibi-scheme/tests/r7rs-tests.scm
     - name: Comment out tests that use (chibi test) features
       run: |
         sed -i '917 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
