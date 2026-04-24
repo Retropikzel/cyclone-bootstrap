@@ -71,8 +71,12 @@ jobs:
         sed -i '923 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
         sed -i '924 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
         sed -i '925 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
-    - name: Compile and run R7RS Tests
+    - name: Compile R7RS Tests
       run: |
         cp chibi-scheme/tests/r7rs-tests.scm .
         cyclone -I . r7rs-tests.scm
+        ls
+    - name: Run R7RS Tests
+      run: |
+        ls
         ./r7rs-tests
