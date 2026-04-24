@@ -77,5 +77,5 @@ jobs:
         ls
     - name: Run R7RS Tests
       run: |
-        cd chibi-scheme/tests && ./r7rs-tests.scm
+        cd chibi-scheme/tests && ./r7rs-tests
         ls && ./r7rs-tests
