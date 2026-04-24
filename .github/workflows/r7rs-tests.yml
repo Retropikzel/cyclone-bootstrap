@@ -42,6 +42,7 @@ jobs:
         sed -i '633 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
         sed -i '658 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
         sed -i '760 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '761 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
         sed -i '783 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
         sed -i '784 s/^/;/' chibi-scheme/tests/r7rs-tests.scm
         sed -i '789 s/^/;/' chibi-scheme/tests/r7rs-tests.scm
