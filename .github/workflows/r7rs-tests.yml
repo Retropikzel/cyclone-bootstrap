@@ -15,5 +15,7 @@ jobs:
       run: sudo make install
     - name: Clone R7RS Tests
       run: git clone https://github.com/ashinn/chibi-scheme --depth=1
+    - name: Fix the tests to use (srfi 64)
+      run: sed -i 's/(chibi test)/(srfi 64)/' chibi-scheme/tests/r7rs-tests.scm
     - name: Compile R7RS Tests
       run: cyclone chibi-scheme/tests/r7rs-tests.scm
