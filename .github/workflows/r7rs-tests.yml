@@ -13,6 +13,62 @@ jobs:
       run: make
     - name: make install
       run: sudo make install
+    - name: Clone Chibi for snow-chibi to install (srfi 64)
+      run: |
+        git clone https://github.com/ashinn/chibi-scheme snow-chibi --depth=1
+        git -C snow-chibi checkout 97faa0bf2d123c558d7ab79216906567c44cb03c
+        make -C snow-chibi
+        sudo make -C snow-chibi install
+    - name: Clone R7RS Tests
+      run: |
+        git clone https://github.com/ashinn/chibi-scheme --depth=1
+        git -C chibi-scheme checkout 97faa0bf2d123c558d7ab79216906567c44cb03c
+    - name: Install (srfi 64)
+      run: snow-chibi --impls=cyclone --always-yes srfi.64
+    - name: Fix r7rs-tests to use (srfi 64)
+      run: |
+        sed -i 's/(chibi test)/(srfi 64)/' chibi-scheme/tests/r7rs-tests.scm
+    - name: Comment out noncompiling tests
+      run: |
+        sed -i '5 s/^/;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '413 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '477 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '482 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '485 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '491 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '493 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '557 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '595 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '633 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '658 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '760 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '783 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '784 s/^/;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '789 s/^/;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '903 s/^/;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '973 s/^/;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '1806 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '1808 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '1811 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '1813 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '1815 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '1944 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '1948 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '1950 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '1952 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '2076 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '2510 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+    - name: Comment out tests that use (chibi test) features
+      run: |
+        sed -i '917 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '918 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '919 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '920 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '921 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '922 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '923 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '924 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '925 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
     - name: Clone R7RS Tests
       run: git clone https://github.com/ashinn/chibi-scheme --depth=1
     - name: Fix the tests to use (srfi 64)
