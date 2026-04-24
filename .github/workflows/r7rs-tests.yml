@@ -13,21 +13,16 @@ jobs:
       run: make
     - name: make install
       run: sudo make install
-    - name: Clone Chibi for snow-chibi to install (srfi 64)
+    - name: Clone (srfi 64)
       run: |
-        git clone https://github.com/ashinn/chibi-scheme snow-chibi --depth=1
-        git -C snow-chibi checkout 97faa0bf2d123c558d7ab79216906567c44cb03c
-        make -C snow-chibi
-        sudo make -C snow-chibi install
+        git clone https://github.com/srfi-explorations/r7rs-srfi.git --depth=1
+        mkdir srfi
+        cp r7rs-srfi/srfi/64.sld srfi/
+        cp r7rs-srfi/srfi/64.scm srfi/
     - name: Clone R7RS Tests
       run: |
         git clone https://github.com/ashinn/chibi-scheme --depth=1
         git -C chibi-scheme checkout 97faa0bf2d123c558d7ab79216906567c44cb03c
-    - name: Install (srfi 64)
-      run: |
-        mkdir -p ${HOME}/.snow
-        echo '() > ${HOME}/.snow/config.scm
-        snow-chibi --impls=cyclone --always-yes srfi.64
     - name: Fix r7rs-tests to use (srfi 64)
       run: |
         sed -i 's/(chibi test)/(srfi 64)/' chibi-scheme/tests/r7rs-tests.scm
@@ -77,4 +72,4 @@ jobs:
     - name: Fix the tests to use (srfi 64)
       run: sed -i 's/(chibi test)/(srfi 64)/' chibi-scheme/tests/r7rs-tests.scm
     - name: Compile R7RS Tests
-      run: cyclone chibi-scheme/tests/r7rs-tests.scm
+      run: cyclone -I . chibi-scheme/tests/r7rs-tests.scm
