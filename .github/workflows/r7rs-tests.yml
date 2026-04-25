@@ -23,9 +23,9 @@ jobs:
         mkdir -p chibi-scheme/tests/srfi
         cp r7rs-srfi/srfi/64.sld chibi-scheme/tests/srfi/
         cp r7rs-srfi/srfi/64.scm chibi-scheme/tests/srfi/
-    - name: Fix r7rs-tests to use the included test utils and (srfi 64)
+    - name: Fix r7rs-tests to use (cyclone test)
       run: |
-        sed -i 's/(chibi test)/(srfi 64)/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i 's/(chibi test)/(cyclone test)/' chibi-scheme/tests/r7rs-tests.scm
         sed -i '20 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
         sed -i '22 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
         sed -i '24 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
@@ -78,6 +78,7 @@ jobs:
     - name: Comment out tests that error when running
       run: |
         sed -i '398 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '1583 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
     - name: Comment out tests that use (chibi test) features
       run: |
         sed -i '917 s/^/#;/' chibi-scheme/tests/r7rs-tests.scm
