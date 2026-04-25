@@ -26,21 +26,21 @@ jobs:
     - name: Fix r7rs-tests to use the included test utils and (srfi 64)
       run: |
         sed -i 's/(chibi test)/(srfi 64)/' chibi-scheme/tests/r7rs-tests.scm
-        sed -i '20 s/^;;//'
-        sed -i '22 s/^;;//'
-        sed -i '24 s/^;;//'
-        sed -i '25 s/^;;//'
-        sed -i '26 s/^;;//'
-        sed -i '27 s/^;;//'
-        sed -i '28 s/^;;//'
-        sed -i '29 s/^;;//'
-        sed -i '30 s/^;;//'
-        sed -i '31 s/^;;//'
-        sed -i '32 s/^;;//'
-        sed -i '33 s/^;;//'
-        sed -i '34 s/^;;//'
-        sed -i '35 s/^;;//'
-        sed -i '36 s/^;;//'
+        sed -i '20 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '22 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '24 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '25 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '26 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '27 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '28 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '29 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '30 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '31 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '32 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '33 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '34 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '35 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
+        sed -i '36 s/^;;//' chibi-scheme/tests/r7rs-tests.scm
     - name: Remove (scheme r5rs) from imports
       run: |
         sed -i 's/(scheme r5rs)//' chibi-scheme/tests/r7rs-tests.scm
